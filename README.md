@@ -14,16 +14,18 @@ Use twai(Two-Wire Automotive Interface) driver instead of can driver.
 
 |SN65HVD23x||ESP32|ESP32-S2||
 |:-:|:-:|:-:|:-:|:-:|
-|D(CTX)|--|GPIO21|GPIO20||
+|D(CTX)|--|GPIO21|GPIO20|(*1)|
 |GND|--|GND|GND||
 |Vcc|--|3.3V|3.3V||
-|R(CRX)|--|GPIO22|GPIO21||
-|Vref|--|N/C|N/V||
+|R(CRX)|--|GPIO22|GPIO21|(*1)|
+|Vref|--|N/C|N/C||
 |CANL|--|||To CAN Bus|
 |CANH|--|||To CAN Bus|
-|RS|--|GND(*1)|GND(*1)||
+|RS|--|GND(*2)|GND(*2)||
 
-(*1) N/C for SN65HVD232
+(*1) You can change using menuconfig.
+
+(*2) N/C for SN65HVD232
 
 2. Termination resistance   
 I used 150 ohms.   

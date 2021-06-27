@@ -7,7 +7,6 @@ import paho.mqtt.client as mqtt
 
 # MQTT Broker
 host = 'broker.emqx.io'
-host = '192.168.10.40'
 # MQTT Port
 port = 1883
 # MQTT Subscribe Topic
