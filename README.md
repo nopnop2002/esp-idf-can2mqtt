@@ -133,7 +133,7 @@ When receiving the TOPIC of "/can/std/201", send the Standard CAN frame with ID 
 When receiving the TOPIC of "/can/ext/201", send the Extended CAN frame with ID 0x201.   
 
 
-# Recive MQTT data using mosquitto_sub
+# Receive MQTT data using mosquitto_sub
 ```mosquitto_sub -h 192.168.10.40 -p 1883 -t '/can/#' -F %X -d```
 
 ![can2mqtt-1](https://user-images.githubusercontent.com/6020549/123541739-0637b800-d781-11eb-9e4d-1645cfdd28f1.jpg)
@@ -151,7 +151,7 @@ When receiving the TOPIC of "/can/ext/201", send the Extended CAN frame with ID 
 ![can2mqtt-13](https://user-images.githubusercontent.com/6020549/123541775-32ebcf80-d781-11eb-8429-f066f2353739.jpg)
 ![can2mqtt-14](https://user-images.githubusercontent.com/6020549/123542301-ea81e100-d783-11eb-94ae-2cb3ba67d24c.jpg)
 
-# Recive MQTT data using python
+# Receive MQTT data using python
 ```
 python -m pip install -U paho-mqtt
 python pub.py
