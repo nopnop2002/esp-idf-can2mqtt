@@ -161,3 +161,24 @@ python -m pip install -U paho-mqtt
 python pub.py
 ```
 
+![python-1](https://user-images.githubusercontent.com/6020549/123560897-28acee00-d7e0-11eb-8b7c-ee9a5257712e.jpg)
+
+# Troubleshooting   
+There is a module of SN65HVD230 like this.   
+![SN65HVD230-1](https://user-images.githubusercontent.com/6020549/80897499-4d204e00-8d34-11ea-80c9-3dc41b1addab.JPG)
+
+There is a __120 ohms__ terminating resistor on the left side.   
+![SN65HVD230-22](https://user-images.githubusercontent.com/6020549/89281044-74185400-d684-11ea-9f55-830e0e9e6424.JPG)
+
+I have removed the terminating resistor.   
+And I used a external resistance of __150 ohms__.   
+A transmission fail is fixed.   
+![SN65HVD230-33](https://user-images.githubusercontent.com/6020549/89280710-f7857580-d683-11ea-9b36-12e36910e7d9.JPG)
+
+If the transmission fails, these are the possible causes.   
+- There is no receiving app on CanBus.
+- The speed does not match the receiver.
+- There is no terminating resistor on the CanBus.
+- There are three terminating resistors on the CanBus.
+- The resistance value of the terminating resistor is incorrect.
+- Stub length in CAN bus is too long. See [here](https://e2e.ti.com/support/interface-group/interface/f/interface-forum/378932/iso1050-can-bus-stub-length).
