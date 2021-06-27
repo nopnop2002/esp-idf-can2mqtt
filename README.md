@@ -7,7 +7,7 @@ I inspired from [here](https://github.com/c3re/can2mqtt).
 
 ![can2mqtt](https://user-images.githubusercontent.com/6020549/123542717-20c06000-d786-11eb-9938-65af6b57fa94.jpg)
 
-I used this image from [here](http://www.adfweb.com/download/filefold/MN67939_ENG.pdf).
+I quoted this image from [here](http://www.adfweb.com/download/filefold/MN67939_ENG.pdf).
 
 # Software requirement
 esp-idf v4.2-dev-2243 or later.   
