@@ -40,7 +40,7 @@ void twai_task(void *pvParameters)
 	MQTT_t mqttBuf;
 	mqttBuf.topic_type = PUBLISH;
 	while (1) {
-		esp_err_t ret = twai_receive(&rx_msg, pdMS_TO_TICKS(100));
+		esp_err_t ret = twai_receive(&rx_msg, pdMS_TO_TICKS(1));
 		if (ret == ESP_OK) {
 			ESP_LOGD(TAG,"twai_receive identifier=0x%x flags=0x%x data_length_code=%d",
 				rx_msg.identifier, rx_msg.flags, rx_msg.data_length_code);
