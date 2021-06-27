@@ -143,13 +143,11 @@ When receiving the TOPIC of "/can/ext/201", send the Extended CAN frame with ID 
 ```echo -ne "\x01\x02\x03" | mosquitto_pub -h 192.168.10.40 -p 1883 -t '/can/std/201' -s```
 
 ![can2mqtt-11](https://user-images.githubusercontent.com/6020549/123541747-12237a00-d781-11eb-8132-72687fd75642.jpg)
-![can2mqtt-12](https://user-images.githubusercontent.com/6020549/123541749-13ed3d80-d781-11eb-8f4a-2851a938da9b.jpg)
 
 - Send extended frame data with CANID = 0x201.   
 ```echo -ne "\x11\x12\x13" | mosquitto_pub -h 192.168.10.40 -p 1883 -t '/can/ext/201' -s```
 
 ![can2mqtt-13](https://user-images.githubusercontent.com/6020549/123541775-32ebcf80-d781-11eb-8429-f066f2353739.jpg)
-![can2mqtt-14](https://user-images.githubusercontent.com/6020549/123542301-ea81e100-d783-11eb-94ae-2cb3ba67d24c.jpg)
 
 # Receive MQTT data using python
 ```
