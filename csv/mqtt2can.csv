@@ -1,0 +1,11 @@
+#The file can2mqtt.csv has three columns. 
+#In the first column you need to specify the CAN Frame type.
+#The CAN frame type is either S(Standard frame) or E(Extended frame).
+#In the second column you have to specify the CAN-ID as a __hexdecimal number__. 
+#In the last column you have to specify the MQTT-Topic.
+#Each CAN-ID and each MQTT-Topic is allowed to appear only once in the whole file.
+
+S,201,/can/std/201
+E,201,/can/ext/201
+S,203,/can/std/203
+E,203,/can/ext/203

@@ -1,0 +1,105 @@
+menu "Application Configuration"
+
+	menu "CAN Setting"
+
+		choice CAN_BITRATE
+			prompt "CAN Bitrate"
+			default CAN_BITRATE_500
+			help
+				Select the CAN bitrate for the example.
+			config CAN_BITRATE_25
+				bool "BITRATE_25"
+				help
+					CAN bitrate is 25 Kbit/s.
+			config CAN_BITRATE_50
+				bool "BITRATE_50"
+				help
+					CAN bitrate is 50 Kbit/s.
+			config CAN_BITRATE_100
+				bool "BITRATE_100"
+				help
+					CAN bitrate is 100 Kbit/s.
+			config CAN_BITRATE_125
+				bool "BITRATE_125"
+				help
+					CAN bitrate is 125 Kbit/s.
+			config CAN_BITRATE_250
+				bool "BITRATE_250"
+				help
+					CAN bitrate is 250 Kbit/s.
+			config CAN_BITRATE_500
+				bool "BITRATE_500"
+				help
+					CAN bitrate is 500 Kbit/s.
+			config CAN_BITRATE_800
+				bool "BITRATE_800"
+				help
+					CAN bitrate is 800 Kbit/s.
+			config CAN_BITRATE_1000
+				bool "BITRATE_1000"
+				help
+					CAN bitrate is 1 Mbit/s.
+		endchoice
+
+		config CTX_GPIO
+			int "CTX GPIO number"
+			range 0 34
+			default 2 if IDF_TARGET_ESP32C3
+			default 20 if IDF_TARGET_ESP32S2 || IDF_TARGET_ESP32S3
+			default 21 if IDF_TARGET_ESP32
+			help
+				GPIO number (IOxx) to CTX.
+				Some GPIOs are used for other purposes (flash connections, etc.).
+				GPIOs 35-39 are input-only so cannot be used as outputs.
+
+		config CRX_GPIO
+			int "CRX GPIO number"
+			range 0 34
+			default 3 if IDF_TARGET_ESP32C3
+			default 21 if IDF_TARGET_ESP32S2 || IDF_TARGET_ESP32S3
+			default 22 if IDF_TARGET_ESP32
+			help
+				GPIO number (IOxx) to CRX.
+				Some GPIOs are used for other purposes (flash connections, etc.).
+				GPIOs 35-39 are input-only so cannot be used as outputs.
+
+		config ENABLE_PRINT
+			bool "Output the received CAN FRAME to STDOUT"
+			help
+				Output the received CAN FRAME to STDOUT.
+
+	endmenu
+
+	menu "WiFi Setting"
+
+		config ESP_WIFI_SSID
+			string "WiFi SSID"
+			default "myssid"
+			help
+				SSID (network name) to connect to.
+
+		config ESP_WIFI_PASSWORD
+			string "WiFi Password"
+			default "mypassword"
+			help
+				WiFi password (WPA or WPA2) to connect to.
+
+		config ESP_MAXIMUM_RETRY
+			int "Maximum retry"
+			default 5
+			help
+				Set the Maximum retry to avoid station reconnecting to the AP unlimited when the AP is really inexistent.
+
+	endmenu
+
+	menu "MQTT Server Setting"
+
+		config BROKER_URL
+			string "Broker URL"
+			default "mqtt://broker.emqx.io"
+			help
+				URL of the broker to connect to
+
+	endmenu
+
+endmenu
