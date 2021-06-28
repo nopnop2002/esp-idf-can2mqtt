@@ -69,7 +69,7 @@ I used 150 ohms.
 ```
 
 __NOTE__   
-3V CAN Trasnceviers are fully interoperable with 5V CAN trasnceviers.   
+3V CAN Trasnceviers like VP230 are fully interoperable with 5V CAN trasnceviers like MCP2551.   
 Check [here](http://www.ti.com/lit/an/slla337/slla337.pdf).
 
 
