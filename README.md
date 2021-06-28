@@ -68,6 +68,11 @@ I used 150 ohms.
       R2:150 ohms(Not working at 120 ohms)
 ```
 
+__NOTE__   
+3V CAN Trasnceviers are fully interoperable with 5V CAN trasnceviers.   
+Check [here](http://www.ti.com/lit/an/slla337/slla337.pdf).
+
+
 # Installation for ESP32
 ```
 git clone https://github.com/nopnop2002/esp-idf-can2mqtt
