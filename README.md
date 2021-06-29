@@ -187,3 +187,7 @@ If the transmission fails, these are the possible causes.
 - There are three terminating resistors on the CanBus.
 - The resistance value of the terminating resistor is incorrect.
 - Stub length in CAN bus is too long. See [here](https://e2e.ti.com/support/interface-group/interface/f/interface-forum/378932/iso1050-can-bus-stub-length).
+
+# Reference
+
+https://github.com/nopnop2002/esp-idf-can2http
