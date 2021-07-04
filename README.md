@@ -178,6 +178,15 @@ https://github.com/emqx/MQTT-Client-Examples
 
 
 # Visualize CAN-Frame
+## Using python
+There is a lot of information on the internet about the Python + visualization library.   
+- [matplotlib](https://matplotlib.org/)
+- [seaborn](https://seaborn.pydata.org/index.html)
+- [chart.js](https://www.chartjs.org/)
+- [bokeh](https://bokeh.org/)
+- [plotly](https://plotly.com/python/)
+
+## Using node.js
 There is a lot of information on the internet about the node.js + __real time__ visualization library.   
 - [epoch](https://epochjs.github.io/epoch/real-time/)
 - [plotly](https://plotly.com/javascript/streaming/)
