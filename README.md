@@ -178,7 +178,7 @@ https://github.com/emqx/MQTT-Client-Examples
 
 
 # Visualize CAN-Frame
-There is a lot of information on the internet about the node.js + real time visualization library.   
+There is a lot of information on the internet about the node.js + __real time__ visualization library.   
 - [epoch](https://epochjs.github.io/epoch/real-time/)
 - [plotly](https://plotly.com/javascript/streaming/)
 
