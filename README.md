@@ -147,7 +147,7 @@ When receiving the TOPIC of "/can/ext/201", send the Extended CAN frame with ID 
 
 ![can2mqtt-1](https://user-images.githubusercontent.com/6020549/123541739-0637b800-d781-11eb-9e4d-1645cfdd28f1.jpg)
 
-# Transmit CANbus data using mosquitto_pub
+# Transmit MQTT data using mosquitto_pub
 - Send standard frame data with CANID = 0x201.   
 ```echo -ne "\x01\x02\x03" | mosquitto_pub -h 192.168.10.40 -p 1883 -t '/can/std/201' -s```
 
@@ -167,7 +167,7 @@ Receive CANbus using UNO.
 # Receive MQTT data using python
 ```
 python -m pip install -U paho-mqtt
-python pub.py
+python sub.py
 ```
 
 ![python-1](https://user-images.githubusercontent.com/6020549/123560897-28acee00-d7e0-11eb-8b7c-ee9a5257712e.jpg)
