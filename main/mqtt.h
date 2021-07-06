@@ -10,9 +10,9 @@ typedef struct {
 } MQTT_t;
 
 typedef struct {
-    uint16_t frame;
-    uint32_t canid;
-    char * topic;
+	uint16_t frame;
+	uint32_t canid;
+	char * topic;
 	int16_t topic_len;
 } TOPIC_t;
 
