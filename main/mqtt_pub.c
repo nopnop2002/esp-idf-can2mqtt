@@ -86,6 +86,7 @@ void mqtt_pub_task(void *pvParameters)
 		if (mqttBuf.topic_type == PUBLISH) {
 			//ESP_LOGI(TAG, "TOPIC=%.*s\r", mqttBuf.topic_len, mqttBuf.topic);
 			ESP_LOGI(TAG, "TOPIC=[%s]", mqttBuf.topic);
+			memset(mqttBuf.data, 0, sizeof(mqttBuf.data));
 			for(int i=0;i<mqttBuf.data_len;i++) {
 				ESP_LOGI(TAG, "DATA=%x", mqttBuf.data[i]);
 			}

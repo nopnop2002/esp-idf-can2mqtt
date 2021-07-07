@@ -45,7 +45,7 @@ menu "Application Configuration"
 			int "CTX GPIO number"
 			range 0 34
 			default 2 if IDF_TARGET_ESP32C3
-			default 20 if IDF_TARGET_ESP32S2 || IDF_TARGET_ESP32S3
+			default 17 if IDF_TARGET_ESP32S2 || IDF_TARGET_ESP32S3
 			default 21 if IDF_TARGET_ESP32
 			help
 				GPIO number (IOxx) to CTX.
@@ -56,7 +56,7 @@ menu "Application Configuration"
 			int "CRX GPIO number"
 			range 0 34
 			default 3 if IDF_TARGET_ESP32C3
-			default 21 if IDF_TARGET_ESP32S2 || IDF_TARGET_ESP32S3
+			default 18 if IDF_TARGET_ESP32S2 || IDF_TARGET_ESP32S3
 			default 22 if IDF_TARGET_ESP32
 			help
 				GPIO number (IOxx) to CRX.

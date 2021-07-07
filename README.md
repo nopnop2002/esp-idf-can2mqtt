@@ -22,10 +22,10 @@ Use twai(Two-Wire Automotive Interface) driver instead of can driver.
 
 |SN65HVD23x||ESP32|ESP32-S2||
 |:-:|:-:|:-:|:-:|:-:|
-|D(CTX)|--|GPIO21|GPIO20|(*1)|
+|D(CTX)|--|GPIO21|GPIO17|(*1)|
 |GND|--|GND|GND||
 |Vcc|--|3.3V|3.3V||
-|R(CRX)|--|GPIO22|GPIO21|(*1)|
+|R(CRX)|--|GPIO22|GPIO18|(*1)|
 |Vref|--|N/C|N/C||
 |CANL|--|||To CAN Bus|
 |CANH|--|||To CAN Bus|
