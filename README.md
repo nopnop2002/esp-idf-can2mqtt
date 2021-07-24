@@ -20,18 +20,18 @@ Use twai(Two-Wire Automotive Interface) driver instead of can driver.
 # Hardware requirements
 1. SN65HVD23x CAN-BUS Transceiver   
 
-|SN65HVD23x||ESP32|ESP32-S2||
-|:-:|:-:|:-:|:-:|:-:|
-|D(CTX)|--|GPIO21|GPIO17|(*1)|
-|GND|--|GND|GND||
-|Vcc|--|3.3V|3.3V||
-|R(CRX)|--|GPIO22|GPIO18|(*1)|
-|Vref|--|N/C|N/C||
-|CANL|--|||To CAN Bus|
-|CANH|--|||To CAN Bus|
-|RS|--|GND|GND|(*2)|
+|SN65HVD23x||ESP32|ESP32-S2|ESP32-C3||
+|:-:|:-:|:-:|:-:|:-:|:-:|
+|D(CTX)|--|GPIO21|GPIO17|GPIO9|(*1)|
+|GND|--|GND|GND|GND||
+|Vcc|--|3.3V|3.3V|3.3V||
+|R(CRX)|--|GPIO22|GPIO18|GPIO10|(*1)|
+|Vref|--|N/C|N/C|N/C||
+|CANL|--||||To CAN Bus|
+|CANH|--||||To CAN Bus|
+|RS|--|GND|GND|GND|(*2)|
 
-(*1) You can change using menuconfig.
+(*1) You can change using menuconfig. But it may not work with other GPIOs.  
 
 (*2) N/C for SN65HVD232
 
@@ -41,31 +41,31 @@ I used 150 ohms.
 
 # Test Circuit   
 ```
-   +-----------+ +-----------+ +-----------+ 
-   | Atmega328 | | Atmega328 | |   ESP32   | 
-   |           | |           | |           | 
-   | Transmit  | | Receive   | | 21    22  | 
-   +-----------+ +-----------+ +-----------+ 
-     |       |    |        |     |       |   
-   +-----------+ +-----------+   |       |   
-   |           | |           |   |       |   
-   |  MCP2515  | |  MCP2515  |   |       |   
-   |           | |           |   |       |   
-   +-----------+ +-----------+   |       |   
-     |      |      |      |      |       |   
-   +-----------+ +-----------+ +-----------+ 
-   |           | |           | | D       R | 
-   |  MCP2551  | |  MCP2551  | |   VP230   | 
-   | H      L  | | H      L  | | H       L | 
-   +-----------+ +-----------+ +-----------+ 
-     |       |     |       |     |       |   
-     +--^^^--+     |       |     +--^^^--+
-     |   R1  |     |       |     |   R2  |   
- |---+-------|-----+-------|-----+-------|---| BackBorn H
-             |             |             |
-             |             |             |
-             |             |             |
- |-----------+-------------+-------------+---| BackBorn L
+   +-----------+   +-----------+   +-----------+ 
+   | Atmega328 |   | Atmega328 |   |   ESP32   | 
+   |           |   |           |   |           | 
+   | Transmit  |   | Receive   |   | 21    22  | 
+   +-----------+   +-----------+   +-----------+ 
+     |       |      |        |       |       |   
+   +-----------+   +-----------+     |       |   
+   |           |   |           |     |       |   
+   |  MCP2515  |   |  MCP2515  |     |       |   
+   |           |   |           |     |       |   
+   +-----------+   +-----------+     |       |   
+     |      |        |      |        |       |   
+   +-----------+   +-----------+   +-----------+ 
+   |           |   |           |   | D       R | 
+   |  MCP2551  |   |  MCP2551  |   |   VP230   | 
+   | H      L  |   | H      L  |   | H       L | 
+   +-----------+   +-----------+   +-----------+ 
+     |       |       |       |       |       |   
+     +--^^^--+       |       |       +--^^^--+
+     |   R1  |       |       |       |   R2  |   
+ |---+-------|-------+-------|-------+-------|---| BackBorn H
+             |               |               |
+             |               |               |
+             |               |               |
+ |-----------+---------------+---------------+---| BackBorn L
 
       +--^^^--+:Terminaror register
       R1:120 ohms
