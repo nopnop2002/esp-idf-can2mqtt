@@ -199,6 +199,7 @@ There is a lot of information on the internet about the Python + visualization l
 There is a lot of information on the internet about the node.js + __real time__ visualization library.   
 - [epoch](https://epochjs.github.io/epoch/real-time/)
 - [plotly](https://plotly.com/javascript/streaming/)
+- [chartjs-plugin-streaming](https://nagix.github.io/chartjs-plugin-streaming/1.9.0/)
 - [pusher](https://pusher.com/tutorials/graph-javascript/)
 
 # Troubleshooting   
