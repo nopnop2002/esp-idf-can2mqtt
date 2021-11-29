@@ -191,7 +191,6 @@ https://github.com/emqx/MQTT-Client-Examples
 There is a lot of information on the internet about the Python + visualization library.   
 - [matplotlib](https://matplotlib.org/)
 - [seaborn](https://seaborn.pydata.org/index.html)
-- [chart.js](https://www.chartjs.org/)
 - [bokeh](https://bokeh.org/)
 - [plotly](https://plotly.com/python/)
 
