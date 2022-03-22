@@ -18,8 +18,12 @@ esp-idf v4.2-dev-2243 or later.
 Use twai(Two-Wire Automotive Interface) driver instead of can driver.   
 
 # Hardware requirements
-1. SN65HVD23x CAN-BUS Transceiver   
+- SN65HVD23x CAN-BUS Transceiver   
 
+- Termination resistance   
+I used 150 ohms.   
+
+# Wireing   
 |SN65HVD23x||ESP32|ESP32-S2|ESP32-C3||
 |:-:|:-:|:-:|:-:|:-:|:-:|
 |D(CTX)|--|GPIO21|GPIO17|GPIO9|(*1)|
@@ -35,8 +39,6 @@ Use twai(Two-Wire Automotive Interface) driver instead of can driver.
 
 (*2) N/C for SN65HVD232
 
-2. Termination resistance   
-I used 150 ohms.   
 
 
 # Test Circuit   
