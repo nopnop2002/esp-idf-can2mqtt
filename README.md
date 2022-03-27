@@ -79,32 +79,15 @@ __NOTE__
 Check [here](http://www.ti.com/lit/an/slla337/slla337.pdf).
 
 
-# Installation for ESP32
+# Installation
 ```
 git clone https://github.com/nopnop2002/esp-idf-can2mqtt
 cd esp-idf-can2mqtt
-idf.py set-target esp32
+idf.py set-target {esp32/esp32s2/esp32c3}
 idf.py menuconfig
 idf.py flash
 ```
 
-# Installation for ESP32-S2
-```
-git clone https://github.com/nopnop2002/esp-idf-can2mqtt
-cd esp-idf-can2mqtt
-idf.py set-target esp32s2
-idf.py menuconfig
-idf.py flash
-```
-
-# Installation for ESP32-C3
-```
-git clone https://github.com/nopnop2002/esp-idf-can2mqtt
-cd esp-idf-can2mqtt
-idf.py set-target esp32c3
-idf.py menuconfig
-idf.py flash
-```
 
 # Configuration
 ![config-main](https://user-images.githubusercontent.com/6020549/123541714-dbe5fa80-d780-11eb-85da-648c201b9a9c.jpg)
