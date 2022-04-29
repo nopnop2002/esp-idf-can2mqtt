@@ -322,7 +322,7 @@ esp_err_t build_table(TOPIC_t **topics, char *file, int16_t *ntopic)
 void dump_table(TOPIC_t *topics, int16_t ntopic)
 {
 	for(int i=0;i<ntopic;i++) {
-		ESP_LOGI(pcTaskGetTaskName(0), "topics[%d] frame=%d canid=0x%x topic=[%s] topic_len=%d",
+		ESP_LOGI(pcTaskGetName(0), "topics[%d] frame=%d canid=0x%x topic=[%s] topic_len=%d",
 		i, (topics+i)->frame, (topics+i)->canid, (topics+i)->topic, (topics+i)->topic_len);
 	}
 

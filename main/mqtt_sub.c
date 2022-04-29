@@ -142,7 +142,7 @@ void mqtt_sub_task(void *pvParameters)
 				tx_msg.data[i] = mqttBuf.data[i];
 			}
 			if (xQueueSend(xQueue_twai_tx, &tx_msg, portMAX_DELAY) != pdPASS) {
-				ESP_LOGE(pcTaskGetTaskName(0), "xQueueSend Fail");
+				ESP_LOGE(pcTaskGetName(0), "xQueueSend Fail");
 			}
 		}
 

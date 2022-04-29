@@ -1,10 +1,10 @@
 /* TWAI Network Example
 
-   This example code is in the Public Domain (or CC0 licensed, at your option.)
+	 This example code is in the Public Domain (or CC0 licensed, at your option.)
 
-   Unless required by applicable law or agreed to in writing, this
-   software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
-   CONDITIONS OF ANY KIND, either express or implied.
+	 Unless required by applicable law or agreed to in writing, this
+	 software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+	 CONDITIONS OF ANY KIND, either express or implied.
 */
 
 #include <stdio.h>
@@ -43,20 +43,22 @@ void twai_task(void *pvParameters)
 		//esp_err_t ret = twai_receive(&rx_msg, pdMS_TO_TICKS(1));
 		esp_err_t ret = twai_receive(&rx_msg, pdMS_TO_TICKS(10));
 		if (ret == ESP_OK) {
-			ESP_LOGD(TAG,"twai_receive identifier=0x%x flags=0x%x data_length_code=%d",
-				rx_msg.identifier, rx_msg.flags, rx_msg.data_length_code);
+			ESP_LOGD(TAG,"twai_receive identifier=0x%x flags=0x%x extd=0x%x rtr=0x%x data_length_code=%d",
+				rx_msg.identifier, rx_msg.flags, rx_msg.extd, rx_msg.rtr, rx_msg.data_length_code);
 
-			int ext = rx_msg.flags & 0x01;
-			int rtr = rx_msg.flags & 0x02;
+			//int ext = rx_msg.flags & 0x01; // flags is Deprecated
+			//int rtr = rx_msg.flags & 0x02; // flags is Deprecated
+			int ext = rx_msg.extd;
+			int rtr = rx_msg.rtr;
 			ESP_LOGD(TAG, "ext=%x rtr=%x", ext, rtr);
 
 #if CONFIG_ENABLE_PRINT
 			if (ext == 0) {
-				printf("Standard ID: 0x%03x     ", rx_msg.identifier);
+				printf("Standard ID: 0x%03x			", rx_msg.identifier);
 			} else {
 				printf("Extended ID: 0x%08x", rx_msg.identifier);
 			}
-			printf(" DLC: %d  Data: ", rx_msg.data_length_code);
+			printf(" DLC: %d	Data: ", rx_msg.data_length_code);
 
 			if (rtr == 0) {
 				for (int i = 0; i < rx_msg.data_length_code; i++) {
@@ -86,6 +88,7 @@ void twai_task(void *pvParameters)
 					}
 					for(int i=0;i<mqttBuf.data_len;i++) {
 						mqttBuf.data[i] = rx_msg.data[i];
+						ESP_LOGI(TAG, "mqttBuf.data[i]=%x", mqttBuf.data[i]);
 					}
 					if (xQueueSend(xQueue_mqtt_tx, &mqttBuf, portMAX_DELAY) != pdPASS) {
 						ESP_LOGE(TAG, "xQueueSend Fail");
@@ -117,7 +120,7 @@ void twai_task(void *pvParameters)
 		} else {
 			ESP_LOGE(TAG, "twai_receive Fail %s", esp_err_to_name(ret));
 		}
-	}
+	} // end while
 
 	// Never reach here
 	vTaskDelete(NULL);

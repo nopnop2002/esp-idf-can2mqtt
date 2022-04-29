@@ -83,7 +83,7 @@ Check [here](http://www.ti.com/lit/an/slla337/slla337.pdf).
 ```
 git clone https://github.com/nopnop2002/esp-idf-can2mqtt
 cd esp-idf-can2mqtt
-idf.py set-target {esp32/esp32s2/esp32c3}
+idf.py set-target {esp32/esp32s2/esp32s3/esp32c3}
 idf.py menuconfig
 idf.py flash
 ```
@@ -137,7 +137,7 @@ When receiving the TOPIC of "/can/ext/201", send the Extended CAN frame with ID 
 
 
 # Receive MQTT data using mosquitto_sub
-```mosquitto_sub -h 192.168.10.40 -p 1883 -t '/can/#' -F %X -d```
+```mosquitto_sub -h broker.emqx.io -p 1883 -t '/can/#' -F %X -d```
 
 ![can2mqtt-1](https://user-images.githubusercontent.com/6020549/123541739-0637b800-d781-11eb-9e4d-1645cfdd28f1.jpg)
 
@@ -161,7 +161,7 @@ Receive CANbus using UNO.
 # Receive MQTT data using python
 ```
 python -m pip install -U paho-mqtt
-python sub.py
+python mqtt_sub.py
 ```
 
 ![python-1](https://user-images.githubusercontent.com/6020549/123560897-28acee00-d7e0-11eb-8b7c-ee9a5257712e.jpg)
@@ -208,6 +208,8 @@ If the transmission fails, these are the possible causes.
 # Reference
 
 https://github.com/nopnop2002/esp-idf-can2http
+
+https://github.com/nopnop2002/esp-idf-can2usb
 
 https://github.com/nopnop2002/esp-idf-CANBus-Monitor
 
