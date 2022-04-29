@@ -24,7 +24,7 @@ Use twai(Two-Wire Automotive Interface) driver instead of can driver.
 I used 150 ohms.   
 
 # Wireing   
-|SN65HVD23x||ESP32|ESP32-S2|ESP32-C3||
+|SN65HVD23x||ESP32|ESP32-S2/S3|ESP32-C3||
 |:-:|:-:|:-:|:-:|:-:|:-:|
 |D(CTX)|--|GPIO21|GPIO17|GPIO9|(*1)|
 |GND|--|GND|GND|GND||
