@@ -160,8 +160,8 @@ Receive CANbus using UNO.
 
 # Receive MQTT data using python
 ```
-python -m pip install -U paho-mqtt
-python mqtt_sub.py
+python3 -m pip install -U paho-mqtt
+python3 mqtt_sub.py
 ```
 
 ![python-1](https://user-images.githubusercontent.com/6020549/123560897-28acee00-d7e0-11eb-8b7c-ee9a5257712e.jpg)
