@@ -14,8 +14,8 @@ You can visualize CAN-Frame using a JavaScript library such as Epoch.
 
 
 # Software requirement
-esp-idf v4.2-dev-2243 or later.   
-Use twai(Two-Wire Automotive Interface) driver instead of can driver.   
+esp-idf v4.4 or later.   
+This is because this version supports ESP32-C3.   
 
 # Hardware requirements
 - SN65HVD23x CAN-BUS Transceiver   
