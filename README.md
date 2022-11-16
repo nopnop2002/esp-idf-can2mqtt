@@ -26,10 +26,10 @@ I used 150 ohms.
 # Wireing   
 |SN65HVD23x||ESP32|ESP32-S2/S3|ESP32-C3||
 |:-:|:-:|:-:|:-:|:-:|:-:|
-|D(CTX)|--|GPIO21|GPIO17|GPIO9|(*1)|
+|D(CTX)|--|GPIO21|GPIO17|GPIO0|(*1)|
 |GND|--|GND|GND|GND||
 |Vcc|--|3.3V|3.3V|3.3V||
-|R(CRX)|--|GPIO22|GPIO18|GPIO10|(*1)|
+|R(CRX)|--|GPIO22|GPIO18|GPIO1|(*1)|
 |Vref|--|N/C|N/C|N/C||
 |CANL|--||||To CAN Bus|
 |CANH|--||||To CAN Bus|
