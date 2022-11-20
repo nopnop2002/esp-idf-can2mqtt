@@ -14,7 +14,7 @@ You can visualize CAN-Frame using a JavaScript library such as Epoch.
 
 
 # Software requirement
-esp-idf v4.4 or later.   
+esp-idf v4.4/v5.0.   
 This is because this version supports ESP32-C3.   
 
 # Hardware requirements
