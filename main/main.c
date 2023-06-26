@@ -393,8 +393,8 @@ void app_main()
 		while(1) vTaskDelay(10);
 	}
 
-    // Initialize mDNS
-    ESP_ERROR_CHECK( mdns_init() );
+	// Initialize mDNS
+	ESP_ERROR_CHECK( mdns_init() );
 
 	// Install and start TWAI driver
 	ESP_LOGI(TAG, "%s",BITRATE);
