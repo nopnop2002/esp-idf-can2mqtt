@@ -100,7 +100,6 @@ idf.py flash
 ![config-wifi](https://user-images.githubusercontent.com/6020549/123541729-f4eeab80-d780-11eb-90b9-f9583764acb8.jpg)
 
 ## MQTT Server Setting
-![config-mqtt-1](https://github.com/nopnop2002/esp-idf-can2mqtt/assets/6020549/98514920-c0a3-476a-bb0e-cbc52e6c6627)
 
 MQTT broker is specified by one of the following.
 - IP address   
@@ -112,11 +111,13 @@ MQTT broker is specified by one of the following.
 
 You can download the MQTT broker from [here](https://github.com/nopnop2002/esp-idf-mqtt-broker).   
 
-![config-mqtt-2](https://github.com/nopnop2002/esp-idf-can2mqtt/assets/6020549/29fb9831-e0dc-4ea6-9a00-00b8f5e7a8de)
+![config-mqtt-1](https://github.com/nopnop2002/esp-idf-can2mqtt/assets/6020549/98514920-c0a3-476a-bb0e-cbc52e6c6627)
 
 Specifies the username and password if the server requires a password when connecting.   
 How to Install and Secure the Mosquitto MQTT Messaging Broker on Debian 10.   
 https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-the-mosquitto-mqtt-messaging-broker-on-debian-10   
+
+![config-mqtt-2](https://github.com/nopnop2002/esp-idf-can2mqtt/assets/6020549/29fb9831-e0dc-4ea6-9a00-00b8f5e7a8de)
 
 # Definition from CANbus to MQTT
 When CANbus data is received, it is sent by MQTT according to csv/can2mqtt.csv.   
