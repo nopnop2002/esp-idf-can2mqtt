@@ -74,9 +74,12 @@ static esp_err_t mqtt_event_handler(esp_mqtt_event_handle_t event)
 #endif
 }
 
+esp_err_t query_mdns_host(const char * host_name, char *ip);
+void convert_mdns_host(char * from, char * to);
+
 void mqtt_pub_task(void *pvParameters)
 {
-	ESP_LOGI(TAG, "Start Subscribe Broker:%s", CONFIG_BROKER_URL);
+	ESP_LOGI(TAG, "Start Subscribe Broker:%s", CONFIG_MQTT_BROKER);
 
 	/* Create Eventgroup */
 	s_mqtt_event_group = xEventGroupCreate();
@@ -93,16 +96,34 @@ void mqtt_pub_task(void *pvParameters)
 	sprintf(client_id, "pub-%02x%02x%02x%02x%02x%02x", mac[0],mac[1],mac[2],mac[3],mac[4],mac[5]);
 	ESP_LOGI(TAG, "client_id=[%s]", client_id);
 
+    // Resolve mDNS host name
+    char ip[128];
+    ESP_LOGI(TAG, "CONFIG_MQTT_BROKER=[%s]", CONFIG_MQTT_BROKER);
+    convert_mdns_host(CONFIG_MQTT_BROKER, ip);
+    ESP_LOGI(TAG, "ip=[%s]", ip);
+    char uri[138];
+    sprintf(uri, "mqtt://%s", ip);
+    ESP_LOGI(TAG, "uri=[%s]", uri);
+
 #if ESP_IDF_VERSION >= ESP_IDF_VERSION_VAL(5, 0, 0)
 	esp_mqtt_client_config_t mqtt_cfg = {
-		.broker.address.uri = CONFIG_BROKER_URL,
+		.broker.address.uri = uri,
 		.broker.address.port = 1883,
+#if CONFIG_BROKER_AUTHENTICATION
+		.credentials.username = CONFIG_AUTHENTICATION_USERNAME,
+		.credentials.authentication.password = CONFIG_AUTHENTICATION_PASSWORD,
+#endif
 		.credentials.client_id = client_id
 	};
 #else
 	esp_mqtt_client_config_t mqtt_cfg = {
-		.uri = CONFIG_BROKER_URL,
+		.uri = uri,
+		.port = 1883,
 		.event_handle = mqtt_event_handler,
+#if CONFIG_BROKER_AUTHENTICATION
+		.username = CONFIG_AUTHENTICATION_USERNAME,
+		.password = CONFIG_AUTHENTICATION_PASSWORD,
+#endif
 		.client_id = client_id
 	};
 #endif

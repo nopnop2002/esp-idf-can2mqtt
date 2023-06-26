@@ -102,11 +102,31 @@ menu "Application Configuration"
 
 	menu "MQTT Server Setting"
 
-		config BROKER_URL
-			string "Broker URL"
-			default "mqtt://broker.emqx.io"
+		config MQTT_BROKER
+			string "MQTT Broker"
+			default "broker.emqx.io"
 			help
-				URL of the broker to connect to
+				Host name or IP address of the broker to connect to.
+
+		config BROKER_AUTHENTICATION
+			bool "Server requests for password when connecting"
+			default false
+			help
+				Server requests for password when connecting.
+
+		config AUTHENTICATION_USERNAME
+			depends on BROKER_AUTHENTICATION
+			string "Username used for connecting to the broker"
+			default "user"
+			help
+				Username used for connecting to the broker.
+
+		config AUTHENTICATION_PASSWORD
+			depends on BROKER_AUTHENTICATION
+			string "Password used for connecting to the broker"
+			default "password"
+			help
+				Username used for connecting to the broker.
 
 	endmenu
 

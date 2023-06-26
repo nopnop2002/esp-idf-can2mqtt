@@ -100,7 +100,19 @@ idf.py flash
 ![config-wifi](https://user-images.githubusercontent.com/6020549/123541729-f4eeab80-d780-11eb-90b9-f9583764acb8.jpg)
 
 ## MQTT Server Setting
-![config-mqtt](https://user-images.githubusercontent.com/6020549/123541731-fcae5000-d780-11eb-810a-986e23d2f623.jpg)
+![config-mqtt-1](https://github.com/nopnop2002/esp-idf-can2mqtt/assets/6020549/98514920-c0a3-476a-bb0e-cbc52e6c6627)
+
+MQTT broker is specified by one of the following.
+- IP adress   
+ 192.168.10.20   
+- mDNS host name   
+ mqtt-broker.local   
+- Fully Qualified Domain Name   
+ broker.emqx.io
+
+![config-mqtt-2](https://github.com/nopnop2002/esp-idf-can2mqtt/assets/6020549/29fb9831-e0dc-4ea6-9a00-00b8f5e7a8de)
+
+Specifies the username and password if the server requires a password when connecting.   
 
 # Definition from CANbus to MQTT
 When CANbus data is received, it is sent by MQTT according to csv/can2mqtt.csv.   

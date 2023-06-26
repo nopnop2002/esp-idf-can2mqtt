@@ -24,6 +24,7 @@
 #include "esp_log.h"
 #include "esp_spiffs.h" 
 #include "driver/twai.h" // Update from V4.2
+#include "mdns.h"
 
 #include "mqtt.h"
 
@@ -64,7 +65,7 @@ static EventGroupHandle_t s_wifi_event_group;
  * - we are connected to the AP with an IP
  * - we failed to connect after the maximum amount of retries */
 #define WIFI_CONNECTED_BIT BIT0
-#define WIFI_FAIL_BIT	   BIT1
+#define WIFI_FAIL_BIT BIT1
 
 static int s_retry_num = 0;
 
@@ -215,6 +216,52 @@ esp_err_t mountSPIFFS(char * partition_label, char * base_path) {
 	return ret;
 }
 
+esp_err_t query_mdns_host(const char * host_name, char *ip)
+{
+	ESP_LOGD(__FUNCTION__, "Query A: %s", host_name);
+
+	struct esp_ip4_addr addr;
+	addr.addr = 0;
+
+	esp_err_t err = mdns_query_a(host_name, 10000,	&addr);
+	if(err){
+		if(err == ESP_ERR_NOT_FOUND){
+			ESP_LOGW(__FUNCTION__, "%s: Host was not found!", esp_err_to_name(err));
+			return ESP_FAIL;
+		}
+		ESP_LOGE(__FUNCTION__, "Query Failed: %s", esp_err_to_name(err));
+		return ESP_FAIL;
+	}
+
+	ESP_LOGD(__FUNCTION__, "Query A: %s.local resolved to: " IPSTR, host_name, IP2STR(&addr));
+	sprintf(ip, IPSTR, IP2STR(&addr));
+	return ESP_OK;
+}
+
+void convert_mdns_host(char * from, char * to)
+{
+	ESP_LOGI(__FUNCTION__, "from=[%s]",from);
+	strcpy(to, from);
+	char *sp;
+	sp = strstr(from, ".local");
+	if (sp == NULL) return;
+
+	int _len = sp - from;
+	ESP_LOGD(__FUNCTION__, "_len=%d", _len);
+	char _from[128];
+	strcpy(_from, from);
+	_from[_len] = 0;
+	ESP_LOGI(__FUNCTION__, "_from=[%s]", _from);
+
+	char _ip[128];
+	esp_err_t ret = query_mdns_host(_from, _ip);
+	ESP_LOGI(__FUNCTION__, "query_mdns_host=%d _ip=[%s]", ret, _ip);
+	if (ret != ESP_OK) return;
+
+	strcpy(to, _ip);
+	ESP_LOGI(__FUNCTION__, "to=[%s]", to);
+}
+
 esp_err_t build_table(TOPIC_t **topics, char *file, int16_t *ntopic)
 {
 	ESP_LOGI(TAG, "build_table file=%s", file);
@@ -321,7 +368,7 @@ esp_err_t build_table(TOPIC_t **topics, char *file, int16_t *ntopic)
 void dump_table(TOPIC_t *topics, int16_t ntopic)
 {
 	for(int i=0;i<ntopic;i++) {
-		ESP_LOGI(pcTaskGetName(0), "topics[%d] frame=%d canid=0x%"PRIx32" topic=[%s] topic_len=%d",
+		ESP_LOGI(pcTaskGetName(0), "topics=[%d] frame=%d canid=0x%"PRIx32" topic=[%s] topic_len=%d",
 		i, (topics+i)->frame, (topics+i)->canid, (topics+i)->topic, (topics+i)->topic_len);
 	}
 
@@ -345,6 +392,9 @@ void app_main()
 	if (wifi_init_sta() == false) {
 		while(1) vTaskDelay(10);
 	}
+
+    // Initialize mDNS
+    ESP_ERROR_CHECK( mdns_init() );
 
 	// Install and start TWAI driver
 	ESP_LOGI(TAG, "%s",BITRATE);

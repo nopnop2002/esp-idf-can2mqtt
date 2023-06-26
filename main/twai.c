@@ -44,8 +44,8 @@ void twai_task(void *pvParameters)
 		//esp_err_t ret = twai_receive(&rx_msg, pdMS_TO_TICKS(1));
 		esp_err_t ret = twai_receive(&rx_msg, pdMS_TO_TICKS(10));
 		if (ret == ESP_OK) {
-			ESP_LOGD(TAG,"twai_receive identifier=0x%"PRIu32" flags=0x%"PRIu32" extd=0x%x rtr=0x%x data_length_code=%d",
-				rx_msg.identifier, rx_msg.flags, rx_msg.extd, rx_msg.rtr, rx_msg.data_length_code);
+			ESP_LOGD(TAG,"twai_receive identifier=0x%"PRIx32" flags=0x%"PRIx32" data_length_code=%d",
+				rx_msg.identifier, rx_msg.flags, rx_msg.data_length_code);
 
 			//int ext = rx_msg.flags & 0x01; // flags is Deprecated
 			//int rtr = rx_msg.flags & 0x02; // flags is Deprecated
