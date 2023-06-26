@@ -110,6 +110,8 @@ MQTT broker is specified by one of the following.
 - Fully Qualified Domain Name   
  ```broker.emqx.io```
 
+You can download the MQTT broker from [here](https://github.com/nopnop2002/esp-idf-mqtt-broker).   
+
 ![config-mqtt-2](https://github.com/nopnop2002/esp-idf-can2mqtt/assets/6020549/29fb9831-e0dc-4ea6-9a00-00b8f5e7a8de)
 
 Specifies the username and password if the server requires a password when connecting.   
