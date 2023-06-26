@@ -104,11 +104,11 @@ idf.py flash
 
 MQTT broker is specified by one of the following.
 - IP address   
- 192.168.10.20   
+ ```192.168.10.20```   
 - mDNS host name   
- mqtt-broker.local   
+ ```mqtt-broker.local```   
 - Fully Qualified Domain Name   
- broker.emqx.io
+ ```broker.emqx.io```
 
 ![config-mqtt-2](https://github.com/nopnop2002/esp-idf-can2mqtt/assets/6020549/29fb9831-e0dc-4ea6-9a00-00b8f5e7a8de)
 
