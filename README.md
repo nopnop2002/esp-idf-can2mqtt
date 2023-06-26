@@ -103,7 +103,7 @@ idf.py flash
 ![config-mqtt-1](https://github.com/nopnop2002/esp-idf-can2mqtt/assets/6020549/98514920-c0a3-476a-bb0e-cbc52e6c6627)
 
 MQTT broker is specified by one of the following.
-- IP adress   
+- IP address   
  192.168.10.20   
 - mDNS host name   
  mqtt-broker.local   
