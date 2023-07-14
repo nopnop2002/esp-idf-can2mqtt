@@ -155,6 +155,8 @@ When receiving the TOPIC of "/can/ext/201", send the Extended CAN frame with ID 
 # Receive MQTT data using mosquitto_sub
 ```mosquitto_sub -h broker.emqx.io -p 1883 -t '/can/#' -F %X -d```
 
+1011121314151617 indicates 8 bytes from 0x11-0x12-0x13-0x14-0x15-0x16-017.   
+
 ![can2mqtt-1](https://user-images.githubusercontent.com/6020549/123541739-0637b800-d781-11eb-9e4d-1645cfdd28f1.jpg)
 
 # Transmit MQTT data using mosquitto_pub
