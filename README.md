@@ -123,7 +123,7 @@ Specifies the username and password if the server requires a password when conne
 You can use a secure MQTT server.   
 A secure MQTT server uses the MQTTS protocol.   
 The default secure MQTT server is ```mqtt.eclipseprojects.io```.   
-If you use a different server, you'll need to change ```getpem.sh``` to run.   
+If you use a different server, you will need to modify ```getpem.sh``` to run.   
 ![config-mqtt-11](https://github.com/nopnop2002/esp-idf-can2mqtt/assets/6020549/8c80e868-18bb-4dc6-b026-4cbcfb95a533)
 
 
