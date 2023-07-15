@@ -83,6 +83,8 @@ Check [here](http://www.ti.com/lit/an/slla337/slla337.pdf).
 ```
 git clone https://github.com/nopnop2002/esp-idf-can2mqtt
 cd esp-idf-can2mqtt
+chmod 777 getpem.sh
+./getpem.sh
 idf.py set-target {esp32/esp32s2/esp32s3/esp32c3}
 idf.py menuconfig
 idf.py flash
@@ -111,12 +113,19 @@ MQTT broker is specified by one of the following.
 
 You can download the MQTT broker from [here](https://github.com/nopnop2002/esp-idf-mqtt-broker).   
 
-![config-mqtt-1](https://github.com/nopnop2002/esp-idf-can2mqtt/assets/6020549/98514920-c0a3-476a-bb0e-cbc52e6c6627)
+![config-mqtt-1](https://github.com/nopnop2002/esp-idf-can2mqtt/assets/6020549/f06f22bb-fae2-4339-ba4b-8798e90f4bdb)
 
 Specifies the username and password if the server requires a password when connecting.   
 [Here's](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-the-mosquitto-mqtt-messaging-broker-on-debian-10) how to install and secure the Mosquitto MQTT messaging broker on Debian 10.   
 
-![config-mqtt-2](https://github.com/nopnop2002/esp-idf-can2mqtt/assets/6020549/29fb9831-e0dc-4ea6-9a00-00b8f5e7a8de)
+![config-mqtt-2](https://github.com/nopnop2002/esp-idf-can2mqtt/assets/6020549/b2ca49af-a0d5-4183-b57e-70616e108590)
+
+You can use a secure MQTT server.   
+A secure MQTT server uses the MQTTS protocol.   
+The default secure MQTT server is ```mqtt.eclipseprojects.io```.   
+If you use a different server, you'll need to change ```getpem.sh``` to run.   
+![config-mqtt-11](https://github.com/nopnop2002/esp-idf-can2mqtt/assets/6020549/8c80e868-18bb-4dc6-b026-4cbcfb95a533)
+
 
 # Definition from CANbus to MQTT
 When CANbus data is received, it is sent by MQTT according to csv/can2mqtt.csv.   

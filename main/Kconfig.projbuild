@@ -102,9 +102,23 @@ menu "Application Configuration"
 
 	menu "MQTT Server Setting"
 
+		config ENABLE_SECURE_MQTT
+			bool "Enable Secure MQTT"
+			default false
+			help
+				Enable Secure MQTT.
+
 		config MQTT_BROKER
+			depends on !ENABLE_SECURE_MQTT
 			string "MQTT Broker"
 			default "broker.emqx.io"
+			help
+				Host name or IP address of the broker to connect to.
+
+		config MQTTS_BROKER
+			depends on ENABLE_SECURE_MQTT
+			string "Secure MQTT Broker"
+			default "mqtt.eclipseprojects.io"
 			help
 				Host name or IP address of the broker to connect to.
 

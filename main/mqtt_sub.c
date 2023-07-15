@@ -27,6 +27,9 @@ static const char *TAG = "SUB";
 
 static EventGroupHandle_t s_mqtt_event_group;
 
+extern const uint8_t root_cert_pem_start[] asm("_binary_root_cert_pem_start");
+extern const uint8_t root_cert_pem_end[] asm("_binary_root_cert_pem_end");
+
 #define MQTT_CONNECTED_BIT BIT0
 
 extern QueueHandle_t xQueue_mqtt_tx;
@@ -38,6 +41,7 @@ extern int16_t nsubscribe;
 void dump_table(TOPIC_t *topics, int16_t ntopic);
 
 static QueueHandle_t xQueueSubscribe;
+
 
 #if ESP_IDF_VERSION >= ESP_IDF_VERSION_VAL(5, 0, 0)
 static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event_id, void *event_data)
@@ -102,7 +106,11 @@ void convert_mdns_host(char * from, char * to);
 
 void mqtt_sub_task(void *pvParameters)
 {
+#if CONFIG_ENABLE_SECURE_MQTT
+	ESP_LOGI(TAG, "Start Subscribe Broker:%s", CONFIG_MQTTS_BROKER);
+#else
 	ESP_LOGI(TAG, "Start Subscribe Broker:%s", CONFIG_MQTT_BROKER);
+#endif
 	dump_table(subscribe, nsubscribe);
 
 	/* Create Eventgroup */
@@ -118,36 +126,54 @@ void mqtt_sub_task(void *pvParameters)
 	uint8_t mac[8];
 	ESP_ERROR_CHECK(esp_base_mac_addr_get(mac));
 	for(int i=0;i<8;i++) {
-		ESP_LOGI(TAG, "mac[%d]=%x", i, mac[i]);
+		ESP_LOGD(TAG, "mac[%d]=%x", i, mac[i]);
 	}
 	char client_id[64];
 	sprintf(client_id, "sub-%02x%02x%02x%02x%02x%02x", mac[0],mac[1],mac[2],mac[3],mac[4],mac[5]);
 	ESP_LOGI(TAG, "client_id=[%s]", client_id);
 
-    // Resolve mDNS host name
-    char ip[128];
-    ESP_LOGI(TAG, "CONFIG_MQTT_BROKER=[%s]", CONFIG_MQTT_BROKER);
-    convert_mdns_host(CONFIG_MQTT_BROKER, ip);
-    ESP_LOGI(TAG, "ip=[%s]", ip);
-    char uri[138];
-    sprintf(uri, "mqtt://%s", ip);
-    ESP_LOGI(TAG, "uri=[%s]", uri);
+	// Resolve mDNS host name
+	char ip[128];
+	char uri[138];
+#if CONFIG_ENABLE_SECURE_MQTT
+	ESP_LOGI(TAG, "CONFIG_MQTTS_BROKER=[%s]", CONFIG_MQTTS_BROKER);
+	convert_mdns_host(CONFIG_MQTTS_BROKER, ip);
+	ESP_LOGI(TAG, "ip=[%s]", ip);
+	sprintf(uri, "mqtts://%s", ip);
+#else
+	ESP_LOGI(TAG, "CONFIG_MQTT_BROKER=[%s]", CONFIG_MQTT_BROKER);
+	convert_mdns_host(CONFIG_MQTT_BROKER, ip);
+	ESP_LOGI(TAG, "ip=[%s]", ip);
+	sprintf(uri, "mqtt://%s", ip);
+#endif
+	ESP_LOGI(TAG, "uri=[%s]", uri);
 
 
 #if ESP_IDF_VERSION >= ESP_IDF_VERSION_VAL(5, 0, 0)
 	esp_mqtt_client_config_t mqtt_cfg = {
 		.broker.address.uri = uri,
+#if CONFIG_ENABLE_SECURE_MQTT
+		.broker.verification.certificate = (const char *)root_cert_pem_start,
+		.broker.address.port = 8883,
+#else
 		.broker.address.port = 1883,
+#endif
 #if CONFIG_BROKER_AUTHENTICATION
 		.credentials.username = CONFIG_AUTHENTICATION_USERNAME,
 		.credentials.authentication.password = CONFIG_AUTHENTICATION_PASSWORD,
 #endif
 		.credentials.client_id = client_id
 	};
+
 #else
 	esp_mqtt_client_config_t mqtt_cfg = {
 		.uri = uri,
+#if CONFIG_ENABLE_SECURE_MQTT
+		.cert_pem = (const char *)root_cert_pem_start,
+		.port = 8883,
+#else
 		.port = 1883,
+#endif
 		.event_handle = mqtt_event_handler,
 #if CONFIG_BROKER_AUTHENTICATION
 		.username = CONFIG_AUTHENTICATION_USERNAME,
@@ -155,7 +181,7 @@ void mqtt_sub_task(void *pvParameters)
 #endif
 		.client_id = client_id
 	};
-#endif
+#endif // ESP_IDF_VERSION
 
 	esp_mqtt_client_handle_t mqtt_client = esp_mqtt_client_init(&mqtt_cfg);
 
@@ -166,7 +192,6 @@ void mqtt_sub_task(void *pvParameters)
 	esp_mqtt_client_start(mqtt_client);
 	xEventGroupWaitBits(s_mqtt_event_group, MQTT_CONNECTED_BIT, false, true, portMAX_DELAY);
 	ESP_LOGI(TAG, "Connect to MQTT Server");
-
 	
 	for(int index=0;index<nsubscribe;index++) {
 		ESP_LOGI(TAG, "subscribe[%d] topic=[%s]", index, subscribe[index].topic);
