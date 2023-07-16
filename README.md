@@ -121,7 +121,7 @@ Specifies the username and password if the server requires a password when conne
 ![config-mqtt-2](https://github.com/nopnop2002/esp-idf-can2mqtt/assets/6020549/b2ca49af-a0d5-4183-b57e-70616e108590)
 
 You can use a secure MQTT server.   
-A secure MQTT server uses the MQTTS protocol.   
+A secure MQTT server uses the MQTTS protocol instead of the MQTT protocol.   
 The default secure MQTT server is ```mqtt.eclipseprojects.io```.   
 If you use a different server, you will need to modify ```getpem.sh``` to run.   
 ![config-mqtt-11](https://github.com/nopnop2002/esp-idf-can2mqtt/assets/6020549/8c80e868-18bb-4dc6-b026-4cbcfb95a533)
