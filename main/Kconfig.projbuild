@@ -6,6 +6,7 @@ menu "Application Configuration"
 		default 46 if IDF_TARGET_ESP32S2
 		default 48 if IDF_TARGET_ESP32S3
 		default 19 if IDF_TARGET_ESP32C3
+		default 30 if IDF_TARGET_ESP32C6
 
 	menu "CAN Setting"
 
@@ -53,7 +54,7 @@ menu "Application Configuration"
 			range 0 GPIO_RANGE_MAX
 			default 21 if IDF_TARGET_ESP32
 			default 17 if IDF_TARGET_ESP32S2 || IDF_TARGET_ESP32S3
-			default 0  if IDF_TARGET_ESP32C3
+			default  0 # C3 and others
 			help
 				GPIO number (IOxx) to CTX.
 				Some GPIOs are used for other purposes (flash connections, etc.).
@@ -64,7 +65,7 @@ menu "Application Configuration"
 			range 0 GPIO_RANGE_MAX
 			default 22 if IDF_TARGET_ESP32
 			default 18 if IDF_TARGET_ESP32S2 || IDF_TARGET_ESP32S3
-			default 1  if IDF_TARGET_ESP32C3
+			default  1 # C3 and others
 			help
 				GPIO number (IOxx) to CRX.
 				Some GPIOs are used for other purposes (flash connections, etc.).

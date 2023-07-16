@@ -89,7 +89,7 @@ void twai_task(void *pvParameters)
 					}
 					for(int i=0;i<mqttBuf.data_len;i++) {
 						mqttBuf.data[i] = rx_msg.data[i];
-						ESP_LOGI(TAG, "mqttBuf.data[i]=%x", mqttBuf.data[i]);
+						ESP_LOGI(TAG, "mqttBuf.data[i]=0x%x", mqttBuf.data[i]);
 					}
 					if (xQueueSend(xQueue_mqtt_tx, &mqttBuf, portMAX_DELAY) != pdPASS) {
 						ESP_LOGE(TAG, "xQueueSend Fail");

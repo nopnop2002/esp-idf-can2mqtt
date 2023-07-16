@@ -14,8 +14,8 @@ You can visualize CAN-Frame using a JavaScript library such as Epoch.
 
 
 # Software requirement
-esp-idf v4.4/v5.0.   
-This is because this version supports ESP32-C3.   
+ESP-IDF V4.4/V5.x.   
+ESP-IDF V5.1 is required when using ESP32C6.   
 
 # Hardware requirements
 - SN65HVD23x CAN-BUS Transceiver   
@@ -24,7 +24,7 @@ This is because this version supports ESP32-C3.
 I used 150 ohms.   
 
 # Wireing   
-|SN65HVD23x||ESP32|ESP32-S2/S3|ESP32-C3||
+|SN65HVD23x||ESP32|ESP32-S2/S3|ESP32-C3/C6||
 |:-:|:-:|:-:|:-:|:-:|:-:|
 |D(CTX)|--|GPIO21|GPIO17|GPIO0|(*1)|
 |GND|--|GND|GND|GND||

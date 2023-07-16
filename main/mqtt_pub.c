@@ -171,7 +171,7 @@ void mqtt_pub_task(void *pvParameters)
 			ESP_LOGI(TAG, "TOPIC=[%s]", mqttBuf.topic);
 			//memset(mqttBuf.data, 0, sizeof(mqttBuf.data));
 			for(int i=0;i<mqttBuf.data_len;i++) {
-				ESP_LOGI(TAG, "DATA=%x", mqttBuf.data[i]);
+				ESP_LOGI(TAG, "DATA=0x%x", mqttBuf.data[i]);
 			}
 			EventBits_t EventBits = xEventGroupGetBits(s_mqtt_event_group);
 			ESP_LOGI(TAG, "EventBits=0x%"PRIx32, EventBits);
