@@ -235,7 +235,7 @@ https://github.com/nopnop2002/esp-idf-can2http
 
 https://github.com/nopnop2002/esp-idf-can2usb
 
-https://github.com/nopnop2002/esp-idf-can-browser
+https://github.com/nopnop2002/esp-idf-can2websocket
 
 https://github.com/nopnop2002/esp-idf-CANBus-Monitor
 
