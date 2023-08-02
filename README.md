@@ -189,6 +189,7 @@ python3 mqtt_sub.py
 
 ![python-screen-1](https://github.com/nopnop2002/esp-idf-can2mqtt/assets/6020549/71045d7a-6483-4d07-bb20-3a55e3bfba46)
 
+CAN allows packets of 0 bytes.   
 If the CAN packet length is 0, it will be displayed as follows.   
 This is because MQTT does not expect a 0-byte payload.   
 ![python-screen-2](https://github.com/nopnop2002/esp-idf-can2mqtt/assets/6020549/d35c3504-09d4-4df0-b448-36c0a6a9509d)
