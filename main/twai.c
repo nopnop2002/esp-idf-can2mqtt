@@ -1,10 +1,10 @@
-/* TWAI Network Example
+/*	TWAI Network Example
 
-	 This example code is in the Public Domain (or CC0 licensed, at your option.)
+	This example code is in the Public Domain (or CC0 licensed, at your option.)
 
-	 Unless required by applicable law or agreed to in writing, this
-	 software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
-	 CONDITIONS OF ANY KIND, either express or implied.
+	Unless required by applicable law or agreed to in writing, this
+	software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+	CONDITIONS OF ANY KIND, either express or implied.
 */
 
 #include <stdio.h>
@@ -87,6 +87,7 @@ void twai_task(void *pvParameters)
 					} else {
 						mqttBuf.data_len = 0;
 					}
+					memset(mqttBuf.data, 0, sizeof(mqttBuf.data));
 					for(int i=0;i<mqttBuf.data_len;i++) {
 						mqttBuf.data[i] = rx_msg.data[i];
 						ESP_LOGI(TAG, "mqttBuf.data[i]=0x%x", mqttBuf.data[i]);

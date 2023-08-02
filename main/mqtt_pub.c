@@ -1,9 +1,9 @@
 /* 
-	 This code is in the Public Domain (or CC0 licensed, at your option.)
+	This code is in the Public Domain (or CC0 licensed, at your option.)
 
-	 Unless required by applicable law or agreed to in writing, this
-	 software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
-	 CONDITIONS OF ANY KIND, either express or implied.
+	Unless required by applicable law or agreed to in writing, this
+	software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+	CONDITIONS OF ANY KIND, either express or implied.
 */
 
 #include <stdio.h>
@@ -168,7 +168,7 @@ void mqtt_pub_task(void *pvParameters)
 		xQueueReceive(xQueue_mqtt_tx, &mqttBuf, portMAX_DELAY);
 		if (mqttBuf.topic_type == PUBLISH) {
 			//ESP_LOGI(TAG, "TOPIC=%.*s\r", mqttBuf.topic_len, mqttBuf.topic);
-			ESP_LOGI(TAG, "TOPIC=[%s]", mqttBuf.topic);
+			ESP_LOGI(TAG, "TOPIC=[%s] LEN=%d", mqttBuf.topic, mqttBuf.data_len);
 			//memset(mqttBuf.data, 0, sizeof(mqttBuf.data));
 			for(int i=0;i<mqttBuf.data_len;i++) {
 				ESP_LOGI(TAG, "DATA=0x%x", mqttBuf.data[i]);

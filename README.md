@@ -187,12 +187,8 @@ python3 -m pip install -U paho-mqtt
 python3 mqtt_sub.py
 ```
 
-![python-screen-1](https://github.com/nopnop2002/esp-idf-can2mqtt/assets/6020549/71045d7a-6483-4d07-bb20-3a55e3bfba46)
+![python-screen](https://github.com/nopnop2002/esp-idf-can2mqtt/assets/6020549/d04bc287-4092-4808-a46a-919c191fc1b7)
 
-CAN allows packets of 0 bytes.   
-If the CAN packet length is 0, it will be displayed as follows.   
-This may be a bug in esp_mqtt_client_publish().   
-![python-screen-2](https://github.com/nopnop2002/esp-idf-can2mqtt/assets/6020549/d35c3504-09d4-4df0-b448-36c0a6a9509d)
 
 # MQTT client Example
 Example code in various languages.   
