@@ -217,6 +217,7 @@ There is a lot of information on the internet about the node.js + __real time__ 
 
 Postman works as a native app on all major operating systems including Linux (32-bit/64-bit), macOS, and Windows (32-bit/64-bit).   
 Postman supports MQTT visualization.   
+You do not need to create a application for visualization.   
 [Here's](https://blog.postman.com/postman-supports-mqtt-apis/) how to get started with MQTT with Postman.   
 
 
