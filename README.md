@@ -213,7 +213,8 @@ There is a lot of information on the internet about the node.js + __real time__ 
 - [chartjs-plugin-streaming](https://nagix.github.io/chartjs-plugin-streaming/1.9.0/)
 
 ## Using postman application
-![postman](https://github.com/nopnop2002/esp-idf-can2mqtt/assets/6020549/8b917332-9726-4375-ac14-488c0d176aa4)
+![postman](https://github.com/nopnop2002/esp-idf-can2mqtt/assets/6020549/e8e55a52-0f6d-43a5-94c9-2603c566785f)
+
 Postman supports MQTT.   
 [Here's](https://blog.postman.com/postman-supports-mqtt-apis/) how to get started with MQTT with Postman.   
 
