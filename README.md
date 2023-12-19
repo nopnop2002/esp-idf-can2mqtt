@@ -215,7 +215,7 @@ There is a lot of information on the internet about the node.js + __real time__ 
 ## Using postman application
 ![postman](https://github.com/nopnop2002/esp-idf-can2mqtt/assets/6020549/e8e55a52-0f6d-43a5-94c9-2603c566785f)
 
-Postman supports MQTT.   
+Postman supports MQTT visualization.   
 [Here's](https://blog.postman.com/postman-supports-mqtt-apis/) how to get started with MQTT with Postman.   
 
 
