@@ -215,7 +215,8 @@ There is a lot of information on the internet about the node.js + __real time__ 
 - [chartjs-plugin-streaming](https://nagix.github.io/chartjs-plugin-streaming/1.9.0/)
 
 ## Using postman application
-![postman](https://github.com/nopnop2002/esp-idf-can2mqtt/assets/6020549/e8e55a52-0f6d-43a5-94c9-2603c566785f)
+![postman-1](https://github.com/nopnop2002/esp-idf-can2mqtt/assets/6020549/dc33df0a-5aa2-498f-9ea3-fdc6a7454fcf)
+![postman-2](https://github.com/nopnop2002/esp-idf-can2mqtt/assets/6020549/84831d3f-58c8-430c-8690-d7b4be31188f)
 
 Postman works as a native app on all major operating systems including Linux (32-bit/64-bit), macOS, and Windows (32-bit/64-bit).   
 Postman supports MQTT visualization.   
