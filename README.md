@@ -253,6 +253,8 @@ https://github.com/nopnop2002/esp-idf-can2usb
 
 https://github.com/nopnop2002/esp-idf-can2websocket
 
+https://github.com/nopnop2002/esp-idf-can2socket
+
 https://github.com/nopnop2002/esp-idf-CANBus-Monitor
 
 https://github.com/nopnop2002/esp-idf-mqtt-client
