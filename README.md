@@ -88,8 +88,6 @@ Check [here](http://www.ti.com/lit/an/slla337/slla337.pdf).
 ```
 git clone https://github.com/nopnop2002/esp-idf-can2mqtt
 cd esp-idf-can2mqtt
-chmod 777 getpem.sh
-./getpem.sh
 idf.py set-target {esp32/esp32s2/esp32s3/esp32c3/esp32c6}
 idf.py menuconfig
 idf.py flash
@@ -129,6 +127,11 @@ You can use a secure MQTT server.
 A secure MQTT server uses the MQTTS protocol instead of the MQTT protocol.   
 The default secure MQTT server is ```mqtt.eclipseprojects.io```.   
 If you use a different server, you will need to modify ```getpem.sh``` to run.   
+```
+chmod 777 getpem.sh
+./getpem.sh
+```
+
 ![config-mqtt-11](https://github.com/nopnop2002/esp-idf-can2mqtt/assets/6020549/8c80e868-18bb-4dc6-b026-4cbcfb95a533)
 
 
