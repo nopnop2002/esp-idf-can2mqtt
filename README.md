@@ -142,17 +142,17 @@ chmod 777 getpem.sh
 
 If you use MQTTS/WS/WSS transport, you can publish and subscribe using MQTT transport.
 ```
-+----------+                   +----------+            +----------+
-|          |                   |          |            |          |
-|  ESP32   | ---MQTTS/WS/WSS-->|  Broker  | ---MQTT--->|  Client  |
-|          |                   |          |            |          |
-+----------+                   +----------+            +----------+
++----------+                   +----------+           +----------+
+|          |                   |          |           |          |
+|  ESP32   | ---MQTTS/WS/WSS-->|  Broker  | ---MQTT-->|Subsctiber|
+|          |                   |          |           |          |
++----------+                   +----------+           +----------+
 
-+----------+            +----------+                   +----------+
-|          |            |          |                   |          |
-|  Client  | ---MQTT--->|  Broker  | ---MQTTS/WS/WSS-->|  ESP32   |
-|          |            |          |                   |          |
-+----------+            +----------+                   +----------+
++----------+                   +----------+           +----------+
+|          |                   |          |           |          |
+|  ESP32   | <--MQTTS/WS/WSS---|  Broker  | <--MQTT---|Publisher |
+|          |                   |          |           |          |
++----------+                   +----------+           +----------+
 ```
 
 
