@@ -16,8 +16,8 @@ This is using the postman application.
 ![postman](https://github.com/nopnop2002/esp-idf-can2mqtt/assets/6020549/e8e55a52-0f6d-43a5-94c9-2603c566785f)
 
 # Software requirement
-ESP-IDF V4.4/V5.x.   
-ESP-IDF V5.1 is required when using ESP32C6.   
+ESP-IDF V5.0 or later.   
+ESP-IDF V4.4 release branch reached EOL in July 2024.   
 
 # Hardware requirements
 - SN65HVD23x CAN-BUS Transceiver   
@@ -116,24 +116,33 @@ MQTT broker is specified by one of the following.
 
 You can download the MQTT broker from [here](https://github.com/nopnop2002/esp-idf-mqtt-broker).   
 
-![config-mqtt-1](https://github.com/nopnop2002/esp-idf-can2mqtt/assets/6020549/f06f22bb-fae2-4339-ba4b-8798e90f4bdb)
+You can use TCP Port.   
+![config-mqtt-1](https://github.com/user-attachments/assets/000a9489-bf43-4047-a445-05318689561f)
 
-Specifies the username and password if the server requires a password when connecting.   
-[Here's](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-the-mosquitto-mqtt-messaging-broker-on-debian-10) how to install and secure the Mosquitto MQTT messaging broker on Debian 10.   
+You can use SSL/TLS Port.   
+SSL/TLS Port uses the MQTTS protocol instead of the MQTT protocol.   
+![config-mqtt-2](https://github.com/user-attachments/assets/e1789115-bdcc-4d47-a8d9-058a21b5cf59)
 
-![config-mqtt-2](https://github.com/nopnop2002/esp-idf-can2mqtt/assets/6020549/b2ca49af-a0d5-4183-b57e-70616e108590)
+You can use WebSocket Port.   
+WebSocket Port uses the WS protocol instead of the MQTT protocol.   
+![config-mqtt-3](https://github.com/user-attachments/assets/28683642-082d-4528-9fd9-3cae8b8bcc18)
 
-You can use a secure MQTT server.   
-A secure MQTT server uses the MQTTS protocol instead of the MQTT protocol.   
-The default secure MQTT server is ```mqtt.eclipseprojects.io```.   
+You can use WebSocket Secure Port.   
+WebSocket Port uses the WSS protocol instead of the MQTT protocol.   
+![config-mqtt-4](https://github.com/user-attachments/assets/cb4db4cb-c9f1-4b50-bfa8-f7643d6bfc75)
+
+__Note for using secure port.___   
+The default MQTT server is ```broker.emqx.io```.   
 If you use a different server, you will need to modify ```getpem.sh``` to run.   
 ```
 chmod 777 getpem.sh
 ./getpem.sh
 ```
 
-![config-mqtt-11](https://github.com/nopnop2002/esp-idf-can2mqtt/assets/6020549/8c80e868-18bb-4dc6-b026-4cbcfb95a533)
+Specifies the username and password if the server requires a password when connecting.   
+[Here's](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-the-mosquitto-mqtt-messaging-broker-on-debian-10) how to install and secure the Mosquitto MQTT messaging broker on Debian 10.   
 
+![config-mqtt-2](https://github.com/nopnop2002/esp-idf-can2mqtt/assets/6020549/b2ca49af-a0d5-4183-b57e-70616e108590)
 
 # Definition from CANbus to MQTT
 When CANbus data is received, it is sent by MQTT according to csv/can2mqtt.csv.   

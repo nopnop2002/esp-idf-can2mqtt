@@ -4,7 +4,8 @@
 
 #set -x
 
-HOST="mqtt.eclipseprojects.io"
+#HOST="mqtt.eclipseprojects.io"
+HOST="broker.emqx.io"
 PORT="8883"
 
 #openssl s_client -showcerts -connect mqtt.eclipseprojects.io:8883 </dev/null >hoge
