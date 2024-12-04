@@ -116,7 +116,7 @@ MQTT broker is specified by one of the following.
 
 You can download the MQTT broker from [here](https://github.com/nopnop2002/esp-idf-mqtt-broker).   
 
-This project supports MQTT/MQTTS/WS/WSS transports.   
+This project supports TCP,SSL/TLS,WebSocket Port and WebSocket Secure Port.   
 - Using TCP Port.   
  ![config-mqtt-1](https://github.com/user-attachments/assets/000a9489-bf43-4047-a445-05318689561f)
 
