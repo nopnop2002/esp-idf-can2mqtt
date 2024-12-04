@@ -140,6 +140,9 @@ chmod 777 getpem.sh
 ./getpem.sh
 ```
 
+__WebSocket/WebSocket Secure Port may differ depending on the broker used.__   
+
+
 If you use MQTTS/WS/WSS transport, you can publish and subscribe using MQTT transport.
 ```
 +----------+                   +----------+           +----------+
