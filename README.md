@@ -128,10 +128,10 @@ WebSocket Port uses the WS protocol instead of the MQTT protocol.
 ![config-mqtt-3](https://github.com/user-attachments/assets/28683642-082d-4528-9fd9-3cae8b8bcc18)
 
 You can use WebSocket Secure Port.   
-WebSocket Port uses the WSS protocol instead of the MQTT protocol.   
+WebSocket Secure Port uses the WSS protocol instead of the MQTT protocol.   
 ![config-mqtt-4](https://github.com/user-attachments/assets/cb4db4cb-c9f1-4b50-bfa8-f7643d6bfc75)
 
-__Note for using secure port.___   
+__Note for using secure port.__   
 The default MQTT server is ```broker.emqx.io```.   
 If you use a different server, you will need to modify ```getpem.sh``` to run.   
 ```
@@ -141,8 +141,7 @@ chmod 777 getpem.sh
 
 Specifies the username and password if the server requires a password when connecting.   
 [Here's](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-the-mosquitto-mqtt-messaging-broker-on-debian-10) how to install and secure the Mosquitto MQTT messaging broker on Debian 10.   
-
-![config-mqtt-2](https://github.com/nopnop2002/esp-idf-can2mqtt/assets/6020549/b2ca49af-a0d5-4183-b57e-70616e108590)
+![config-mqtt-11](https://github.com/user-attachments/assets/1d00b333-3bef-40ad-95c0-97059b0ffaf6)
 
 # Definition from CANbus to MQTT
 When CANbus data is received, it is sent by MQTT according to csv/can2mqtt.csv.   
