@@ -116,20 +116,21 @@ MQTT broker is specified by one of the following.
 
 You can download the MQTT broker from [here](https://github.com/nopnop2002/esp-idf-mqtt-broker).   
 
-You can use TCP Port.   
-![config-mqtt-1](https://github.com/user-attachments/assets/000a9489-bf43-4047-a445-05318689561f)
+This project supports MQTT/MQTTS/WS/WSS transports.   
+- Using TCP Port.   
+ ![config-mqtt-1](https://github.com/user-attachments/assets/000a9489-bf43-4047-a445-05318689561f)
 
-You can use SSL/TLS Port.   
-SSL/TLS Port uses the MQTTS protocol instead of the MQTT protocol.   
-![config-mqtt-2](https://github.com/user-attachments/assets/e1789115-bdcc-4d47-a8d9-058a21b5cf59)
+- Using SSL/TLS Port.   
+ SSL/TLS Port uses the MQTTS protocol instead of the MQTT protocol.   
+ ![config-mqtt-2](https://github.com/user-attachments/assets/e1789115-bdcc-4d47-a8d9-058a21b5cf59)
 
-You can use WebSocket Port.   
-WebSocket Port uses the WS protocol instead of the MQTT protocol.   
-![config-mqtt-3](https://github.com/user-attachments/assets/28683642-082d-4528-9fd9-3cae8b8bcc18)
+- Using WebSocket Port.   
+ WebSocket Port uses the WS protocol instead of the MQTT protocol.   
+ ![config-mqtt-3](https://github.com/user-attachments/assets/28683642-082d-4528-9fd9-3cae8b8bcc18)
 
-You can use WebSocket Secure Port.   
-WebSocket Secure Port uses the WSS protocol instead of the MQTT protocol.   
-![config-mqtt-4](https://github.com/user-attachments/assets/cb4db4cb-c9f1-4b50-bfa8-f7643d6bfc75)
+- Using WebSocket Secure Port.   
+ WebSocket Secure Port uses the WSS protocol instead of the MQTT protocol.   
+ ![config-mqtt-4](https://github.com/user-attachments/assets/cb4db4cb-c9f1-4b50-bfa8-f7643d6bfc75)
 
 __Note for using secure port.__   
 The default MQTT server is ```broker.emqx.io```.   
