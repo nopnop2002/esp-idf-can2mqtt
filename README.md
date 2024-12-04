@@ -139,6 +139,22 @@ chmod 777 getpem.sh
 ./getpem.sh
 ```
 
+If you use MQTTS/WS/WSS transport, you can publish and subscribe using MQTT transport.
+```
++----------+                   +----------+            +----------+
+|          |                   |          |            |          |
+|  ESP32   | ---MQTTS/WS/WSS-->|  Broker  | ---MQTT--->|  Client  |
+|          |                   |          |            |          |
++----------+                   +----------+            +----------+
+
++----------+            +----------+                   +----------+
+|          |            |          |                   |          |
+|  Client  | ---MQTT--->|  Broker  | ---MQTTS/WS/WSS-->|  ESP32   |
+|          |            |          |                   |          |
++----------+            +----------+                   +----------+
+```
+
+
 Specifies the username and password if the server requires a password when connecting.   
 [Here's](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-the-mosquitto-mqtt-messaging-broker-on-debian-10) how to install and secure the Mosquitto MQTT messaging broker on Debian 10.   
 ![config-mqtt-11](https://github.com/user-attachments/assets/1d00b333-3bef-40ad-95c0-97059b0ffaf6)
