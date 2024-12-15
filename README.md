@@ -255,6 +255,10 @@ Postman supports MQTT visualization.
 You do not need to create a application for visualization.   
 [Here's](https://blog.postman.com/postman-supports-mqtt-apis/) how to get started with MQTT with Postman.   
 
+## Using mqttx
+MQTTX is an open source cross-platform MQTT 5.0 desktop client tool.   
+Can be used with macOS, Linux, and Windows.   
+![mqttx](https://github.com/user-attachments/assets/aaaffb77-a2c8-4476-b20e-d0d12e3356a9)
 
 # Troubleshooting   
 There is a module of SN65HVD230 like this.   
