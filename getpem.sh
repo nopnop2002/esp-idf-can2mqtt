@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Extract the root certificate from smtp.googlemail.com.
+# Extract the root certificate from ${HOST}:${PORT}.
 
 #set -x
 
@@ -8,7 +8,6 @@
 HOST="broker.emqx.io"
 PORT="8883"
 
-#openssl s_client -showcerts -connect mqtt.eclipseprojects.io:8883 </dev/null >hoge
 openssl s_client -showcerts -connect $HOST:$PORT </dev/null >hoge
 
 start=`grep -e "-----BEGIN CERTIFICATE-----" -n hoge | sed -e 's/:.*//g' | tail -n 1`
