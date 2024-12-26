@@ -106,16 +106,7 @@ idf.py flash
 
 ## MQTT Server Setting
 
-MQTT broker is specified by one of the following.
-- IP address   
- ```192.168.10.20```   
-- mDNS host name   
- ```mqtt-broker.local```   
-- Fully Qualified Domain Name   
- ```broker.emqx.io```
-
-You can download the MQTT broker from [here](https://github.com/nopnop2002/esp-idf-mqtt-broker).   
-
+### Select Transport   
 This project supports TCP,SSL/TLS,WebSocket and WebSocket Secure Port.   
 - Using TCP Port.   
  ![config-mqtt-1](https://github.com/user-attachments/assets/000a9489-bf43-4047-a445-05318689561f)
@@ -159,7 +150,19 @@ If you use MQTTS/WS/WSS transport, you can still publish and subscribe using MQT
 +----------+                   +----------+           +----------+
 ```
 
+### Specifying an MQTT Broker   
+You can specify your MQTT broker in one of the following ways:   
+- IP address   
+ ```192.168.10.20```   
+- mDNS host name   
+ ```mqtt-broker.local```   
+- Fully Qualified Domain Name   
+ ```broker.emqx.io```
 
+You can use this as broker.   
+https://github.com/nopnop2002/esp-idf-mqtt-broker
+
+### Secure Option
 Specifies the username and password if the server requires a password when connecting.   
 [Here's](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-the-mosquitto-mqtt-messaging-broker-on-debian-10) how to install and secure the Mosquitto MQTT messaging broker on Debian 10.   
 ![config-mqtt-11](https://github.com/user-attachments/assets/1d00b333-3bef-40ad-95c0-97059b0ffaf6)
