@@ -25,11 +25,10 @@
 
 static const char *TAG = "SUB";
 
-static EventGroupHandle_t s_mqtt_event_group;
-
 extern const uint8_t root_cert_pem_start[] asm("_binary_root_cert_pem_start");
 extern const uint8_t root_cert_pem_end[] asm("_binary_root_cert_pem_end");
 
+static EventGroupHandle_t s_mqtt_event_group;
 #define MQTT_CONNECTED_BIT BIT0
 
 extern QueueHandle_t xQueue_mqtt_tx;
@@ -140,6 +139,7 @@ void mqtt_sub_task(void *pvParameters)
 #endif
 	ESP_LOGI(TAG, "uri=[%s]", uri);
 
+	// Initialize MQTT configuration structure
 	esp_mqtt_client_config_t mqtt_cfg = {
 		.broker.address.uri = uri,
 #if CONFIG_MQTT_TRANSPORT_OVER_TCP
@@ -158,7 +158,6 @@ void mqtt_sub_task(void *pvParameters)
 
 	esp_mqtt_client_handle_t mqtt_client = esp_mqtt_client_init(&mqtt_cfg);
 	esp_mqtt_client_register_event(mqtt_client, ESP_EVENT_ANY_ID, mqtt_event_handler, NULL);
-
 	esp_mqtt_client_start(mqtt_client);
 	xEventGroupWaitBits(s_mqtt_event_group, MQTT_CONNECTED_BIT, false, true, portMAX_DELAY);
 	ESP_LOGI(TAG, "Connect to MQTT Server");

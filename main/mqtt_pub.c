@@ -25,11 +25,10 @@
 
 static const char *TAG = "PUB";
 
-static EventGroupHandle_t s_mqtt_event_group;
-
 extern const uint8_t root_cert_pem_start[] asm("_binary_root_cert_pem_start");
 extern const uint8_t root_cert_pem_end[] asm("_binary_root_cert_pem_end");
 
+static EventGroupHandle_t s_mqtt_event_group;
 #define MQTT_CONNECTED_BIT BIT0
 
 extern QueueHandle_t xQueue_mqtt_tx;
@@ -76,7 +75,7 @@ void mqtt_pub_task(void *pvParameters)
 {
 	ESP_LOGI(TAG, "Start Subscribe Broker:%s", CONFIG_MQTT_BROKER);
 
-	/* Create Eventgroup */
+	// Create Eventgroup
 	s_mqtt_event_group = xEventGroupCreate();
 	configASSERT( s_mqtt_event_group );
 	xEventGroupClearBits(s_mqtt_event_group, MQTT_CONNECTED_BIT);
