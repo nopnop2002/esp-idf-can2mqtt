@@ -79,6 +79,8 @@ I used 150 ohms.
       R2:150 ohms(Not working at 120 ohms)
 ```
 
+![ESP32-CAN-3V3](https://github.com/nopnop2002/esp-idf-candump/assets/6020549/dec3744e-ede1-41c7-99b6-77ebfe916123)
+
 __NOTE__   
 3V CAN Trasnceviers like VP230 are fully interoperable with 5V CAN trasnceviers like MCP2551.   
 Check [here](http://www.ti.com/lit/an/slla337/slla337.pdf).
