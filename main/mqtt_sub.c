@@ -19,7 +19,6 @@
 #include "esp_event.h"
 #include "esp_mac.h"
 #include "mqtt_client.h"
-#include "driver/twai.h"
 
 #include "mqtt.h"
 
@@ -167,7 +166,6 @@ void mqtt_sub_task(void *pvParameters)
 		esp_mqtt_client_subscribe(mqtt_client, subscribe[index].topic, 0);
 	}
 
-	twai_message_t tx_msg;
 	MQTT_t mqttBuf;
 	while (1) {
 		xQueueReceive(xQueueSubscribe, &mqttBuf, portMAX_DELAY);
@@ -183,19 +181,18 @@ void mqtt_sub_task(void *pvParameters)
 		for(int index=0;index<nsubscribe;index++) {
 			if (strcmp(subscribe[index].topic, mqttBuf.topic) != 0) continue;
 			ESP_LOGI(TAG, "subscribe[index].frame=%d", subscribe[index].frame);
+			FRAME_t tx_msg;
+			tx_msg.canid = subscribe[index].canid;
 			tx_msg.extd = subscribe[index].frame;
-			tx_msg.ss = 1;
-			tx_msg.self = 0;
-			tx_msg.dlc_non_comp = 0;
-			tx_msg.identifier = subscribe[index].canid;
-			tx_msg.data_length_code = mqttBuf.data_len;
+			tx_msg.data_len = mqttBuf.data_len;
 			if (mqttBuf.data_len > 8) {
 				ESP_LOGW(TAG, "Data length is reduced to 8 bytes");
-				tx_msg.data_length_code = 8;
+				tx_msg.data_len = 8;
 			}
-			for (int i=0;i<tx_msg.data_length_code;i++) {
+			for (int i=0;i<tx_msg.data_len;i++) {
 				tx_msg.data[i] = mqttBuf.data[i];
 			}
+			
 			if (xQueueSend(xQueue_twai_tx, &tx_msg, portMAX_DELAY) != pdPASS) {
 				ESP_LOGE(TAG, "xQueueSend Fail");
 			}

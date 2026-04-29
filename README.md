@@ -20,13 +20,7 @@ ESP-IDF V5.0 or later.
 ESP-IDF V4.4 release branch reached EOL in July 2024.   
 
 __Note for ESP-IDF V6__   
-This option is required for ESP-IDF V6 because this project uses legacy drivers.   
-<img width="659" height="486" alt="Image" src="https://github.com/user-attachments/assets/fd46966b-6a9f-4034-a9e3-b13a75c02bc8" />
-
-ESP-IDF V6 gives this warning, but it still works.   
-```
-#warning "The legacy TWAI driver is deprecated, please use esp_twai.h"
-```
+Under ESP-IDF V6.0 or later, this project uses a new twai driver.   
 
 
 # Hardware requirements

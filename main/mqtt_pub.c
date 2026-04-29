@@ -19,7 +19,6 @@
 #include "esp_event.h"
 #include "esp_mac.h"
 #include "mqtt_client.h"
-#include "driver/twai.h"
 
 #include "mqtt.h"
 

@@ -8,14 +8,11 @@
 
 #include <stdio.h>
 #include <inttypes.h>
-#include <stdlib.h>
-#include <string.h>
+
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "freertos/queue.h"
 #include "freertos/event_groups.h"
-#include "freertos/semphr.h"
-#include "esp_system.h"
 #include "esp_wifi.h"
 #include "esp_event.h"
 #include "esp_vfs.h"
@@ -23,40 +20,11 @@
 #include "esp_err.h"
 #include "esp_log.h"
 #include "esp_spiffs.h" 
-#include "driver/twai.h" // Update from V4.2
 #include "mdns.h"
 
 #include "mqtt.h"
 
-#define TAG	"MAIN"
-
-static const twai_filter_config_t f_config = TWAI_FILTER_CONFIG_ACCEPT_ALL();
-
-#if CONFIG_CAN_BITRATE_25
-static const twai_timing_config_t t_config = TWAI_TIMING_CONFIG_25KBITS();
-#define BITRATE "Bitrate is 25 Kbit/s"
-#elif CONFIG_CAN_BITRATE_50
-static const twai_timing_config_t t_config = TWAI_TIMING_CONFIG_50KBITS();
-#define BITRATE "Bitrate is 50 Kbit/s"
-#elif CONFIG_CAN_BITRATE_100
-static const twai_timing_config_t t_config = TWAI_TIMING_CONFIG_100KBITS();
-#define BITRATE "Bitrate is 100 Kbit/s"
-#elif CONFIG_CAN_BITRATE_125
-static const twai_timing_config_t t_config = TWAI_TIMING_CONFIG_125KBITS();
-#define BITRATE "Bitrate is 125 Kbit/s"
-#elif CONFIG_CAN_BITRATE_250
-static const twai_timing_config_t t_config = TWAI_TIMING_CONFIG_250KBITS();
-#define BITRATE "Bitrate is 250 Kbit/s"
-#elif CONFIG_CAN_BITRATE_500
-static const twai_timing_config_t t_config = TWAI_TIMING_CONFIG_500KBITS();
-#define BITRATE "Bitrate is 500 Kbit/s"
-#elif CONFIG_CAN_BITRATE_800
-static const twai_timing_config_t t_config = TWAI_TIMING_CONFIG_800KBITS();
-#define BITRATE "Bitrate is 800 Kbit/s"
-#elif CONFIG_CAN_BITRATE_1000
-static const twai_timing_config_t t_config = TWAI_TIMING_CONFIG_1MBITS();
-#define BITRATE "Bitrate is 1 Mbit/s"
-#endif
+static const char *TAG = "MAIN";
 
 /* FreeRTOS event group to signal when we are connected*/
 static EventGroupHandle_t s_wifi_event_group;
@@ -392,17 +360,6 @@ void app_main()
 	// Initialize mDNS
 	ESP_ERROR_CHECK(mdns_init());
 
-	// Install and start TWAI driver
-	ESP_LOGI(TAG, "%s",BITRATE);
-	ESP_LOGI(TAG, "CTX_GPIO=%d",CONFIG_CTX_GPIO);
-	ESP_LOGI(TAG, "CRX_GPIO=%d",CONFIG_CRX_GPIO);
-
-	static const twai_general_config_t g_config = TWAI_GENERAL_CONFIG_DEFAULT(CONFIG_CTX_GPIO, CONFIG_CRX_GPIO, TWAI_MODE_NORMAL);
-	ESP_ERROR_CHECK(twai_driver_install(&g_config, &t_config, &f_config));
-	ESP_LOGI(TAG, "Driver installed");
-	ESP_ERROR_CHECK(twai_start());
-	ESP_LOGI(TAG, "Driver started");
-
 	// Mount SPIFFS
 	char *partition_label = "storage";
 	char *base_path = "/spiffs"; 
@@ -411,7 +368,7 @@ void app_main()
 	// Create Queue
 	xQueue_mqtt_tx = xQueueCreate( 10, sizeof(MQTT_t) );
 	configASSERT( xQueue_mqtt_tx );
-	xQueue_twai_tx = xQueueCreate( 10, sizeof(twai_message_t) );
+	xQueue_twai_tx = xQueueCreate( 10, sizeof(FRAME_t) );
 	configASSERT( xQueue_twai_tx );
 
 	// build publish table
