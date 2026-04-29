@@ -5,9 +5,10 @@
 # python3 -m pip install -U argparse
 
 import argparse
+import random
 import paho.mqtt.client as mqtt
 
-def on_connect(client, userdata, flags, respons_code):
+def on_connect(client, userdata, flags, respons_code, properties):
 	print('connect {0} status {1}'.format(args.host, respons_code))
 	client.subscribe(args.topic)
 
@@ -25,7 +26,8 @@ if __name__=='__main__':
 	print("args.port={}".format(args.port))
 	print("args.topic={}".format(args.topic))
 
-	client = mqtt.Client(protocol=mqtt.MQTTv311)
+	client_id = f'python-mqtt-{random.randint(0, 1000)}'
+	client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, client_id)
 	client.on_connect = on_connect
 	client.on_message = on_message
 	client.connect(args.host, port=args.port, keepalive=60)
