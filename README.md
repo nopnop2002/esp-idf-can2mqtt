@@ -100,6 +100,8 @@ Check [here](http://www.ti.com/lit/an/slla337/slla337.pdf).
 ```
 git clone https://github.com/nopnop2002/esp-idf-can2mqtt
 cd esp-idf-can2mqtt
+chmod 777 ./getpem.sh
+./getpem.sh
 idf.py set-target {esp32/esp32s2/esp32s3/esp32c3/esp32c6}
 idf.py menuconfig
 idf.py flash
